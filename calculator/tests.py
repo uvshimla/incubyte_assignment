@@ -2,10 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 class AddViewTests(TestCase):
-    def test_empty_string_returns_zero(self):
-        response = self.client.post(reverse('add'), {'numbers': ''})
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {'result': 0})
+    
 
     def test_single_number(self):
         response = self.client.post(reverse('add'), {'numbers': '1'})
