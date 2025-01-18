@@ -23,8 +23,10 @@ class AddViewTests(TestCase):
         response = self.client.post(reverse('add'), {'numbers': '1\n2,3'})
         self.assertEqual(response.json(), {'result': 6})
 
-    
-
+    def test_custom_delimiter(self):
+        response = self.client.post(reverse('add'), {'numbers': '//;\n1;2'})
+        self.assertEqual(response.json(), {'result': 3})
+        
 
     def test_multiple_negative_numbers(self):
         response = self.client.post(reverse('add'), {'numbers': '1,-1,-2'})
